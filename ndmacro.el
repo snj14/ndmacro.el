@@ -226,13 +226,13 @@
         loop-elm loop-all input-count result match-pos)
     ;; 繰り返しとみなさないものを除外：
     ;; 直近のndmacroキーを除外した上で、
-    (while (and (setq match-pos (position last-command-char lst :test 'equal))
+    (while (and (setq match-pos (position last-command-event lst :test 'equal))
                 (= match-pos 0))
       (setq lst (cdr lst)))
     ;; 最後にndmacroのキーを押した時以降の入力を探索対象に。
     ;; => ndmacroキーを跨いで繰り返しとみなさない
     (setq lst (subseq lst 0
-                      (position last-command-char lst :test 'equal)))
+                      (position last-command-event lst :test 'equal)))
     ;; 繰り返しを探す
     (multiple-value-setq (loop-all input-count)
       (ndmacro:search-loop lst))
