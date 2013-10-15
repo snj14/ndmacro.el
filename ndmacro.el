@@ -10,7 +10,7 @@
 ;; from On Lisp utility
 (defun ndmacro:util-group (source n)
   (if (zerop n) (error "zero length"))
-  (labels ((rec (source acc)
+  (cl-labels ((rec (source acc)
              (let ((rest (nthcdr n source)))
                (if (consp rest)
                    (rec rest (cons
@@ -182,9 +182,9 @@
                                     (mapcar 'string l)))
                           splitted)))
     (mapcar* 'list
-             (mapcar '(lambda (sub) (ndmacro:position-subseq lst sub))
+             (mapcar #'(lambda (sub) (ndmacro:position-subseq lst sub))
                      splitted)
-             (mapcar '(lambda (n) (length n)) numbers)
+             (mapcar #'(lambda (n) (length n)) numbers)
              (mapcar 'string-to-number numbers))))
 
 ;; (ndmacro:get-incremented-sequence
