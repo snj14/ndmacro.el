@@ -1,5 +1,6 @@
-;; ndmacro.el
+;;; ndmacro.el
 ;;
+;; Version: $Id: ndmacro.el, v 0.0 2017/07/07 $
 ;; last updated : 2012-02-07
 
 (eval-when-compile (require 'cl))
@@ -277,3 +278,4 @@
 ;;; - dmacroの規則２ (XYXのパターン)に対応させる?
 
 (provide 'ndmacro)
+;;; ndmacro.el ends here
