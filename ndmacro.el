@@ -1,4 +1,4 @@
-;;; ndmacro.el
+;;; ndmacro.el --- macro that support counting
 ;;
 ;; Version: $Id: ndmacro.el, v 0.0 2017/07/07 $
 ;; last updated : 2012-02-07
