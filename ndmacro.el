@@ -1,7 +1,6 @@
 ;;; ndmacro.el --- macro that support counting
 ;;
-;; Version: $Id: ndmacro.el, v 0.0 2017/07/07 $
-;; last updated : 2012-02-07
+;; Version: $Id: ndmacro.el, v 0.0 2022/07/11 $
 
 (eval-when-compile (require 'cl))
 
@@ -108,13 +107,11 @@
     (cond (list1
            (let ((begin 0)
                  (end   (length list1)))
-             (while (equal list1 (subseq list2
-                                         (+ begin (length list1))
-                                         (+ end   (length list1))))
+             (while (equal list1 (subseq list2 begin (min (length list2) end)))
                (setq begin (+ begin (length list1))
                      end   (+ end   (length list1))))
              ;; 繰り返しの全体と、途中までの場合何桁目まで入力しているか？を返す
-             (values (ndmacro:util-group (subseq lst 0 (+ end (length list1)))
+             (values (ndmacro:util-group (subseq lst 0 (min (length lst) (+ end (length list1))))
                                          (length list1))
                      0
                      ;; (subseq lst (+ begin (length list1))
